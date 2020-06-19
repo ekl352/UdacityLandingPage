@@ -38,41 +38,31 @@
   //Keep in mind: where is the text from each navigation item coming from and where are you anchoring to? 
  	// How're you going to add each navigation item to your menu (there are several ways to do this)
 
-	// function createLi(evt) {
 
-	// }
+const sections = document.querySelectorAll("section");
+const navBarList = 
+document.querySelector("#navbar__list");
 
-const Frag = document.createDocumentFragment();
+function createListItem(id, name) {
+	const listItem = document.createElement("li");
+	const anchor = document.createElement("a");
+	anchor.textContent = name; 
+	anchor.href = "#" + id;
+	listItem.appendChild(anchor);
+	navBarList.appendChild(listItem);
+}
 
-const list = document.createElement('li');
-const section = document.querySelector('#section1');
+function createNav() {
+	sections.forEach((section) =>
+		createListItem(section.id, section.dataset.nav)
+	);
+}
 
-const textSection = section.dataset.nav;
-list.textContent = textSection.textContent;
+createNav();
 
-Frag.appendChild(list);
-document.body.header.appendChild(Frag);
 
-// const myListFrag = document.createDocumentFragment(); 
+document.querySelector(".navbar__menu").appendChild(navBarList);
 
-// for (let i = 1; i <=3; i++) {
-// 	var list = document.createElement('li');
-// 	var sectionName = '#section' + 'i';
-// 	var section = document.querySelector('sectionName');
-
-// 	var textSection = section.dataset.nav;
-
-// 	list.textContent = textSection; 
-	
-// 	myListFrag.appendChild(list);
-// }
-
-// document.ul.appendChild(myListFrag);
-
-// document.addEventListener('DOMContentLoaded', function(){
-// 	document.createElement('li');
-	//place the navigation in the id navbar__list
-// });
 
 
 // Add class 'active' to section when near top of viewport
