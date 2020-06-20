@@ -67,6 +67,22 @@ document.querySelector(".navbar__menu").appendChild(navBarList);
 
 // Add class 'active' to section when near top of viewport
 
+function activeClassAssign() {
+	sections.forEach((section) =>
+			window.addEventListener("scroll", function(){
+				if (section.getBoundingClientRect().top < window.innerHeight &&
+					section.getBoundingClientRect().bottom > window.innerHeight) {
+					section.classList.add("your-active-class");
+				} else {
+					section.classList.remove("your-active-class");
+				}
+			})
+		);
+}
+
+activeClassAssign();
+
+
 
 // Scroll to anchor ID using scrollTO event
 
