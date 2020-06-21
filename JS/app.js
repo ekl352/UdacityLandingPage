@@ -18,30 +18,20 @@
  * 
 */
 
+const sections = document.querySelectorAll("section");
+const navBarList = document.querySelector("#navbar__list");
+const links = document.querySelectorAll('a');
+
+
+
 
 /**
  * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
  * Begin Main Functions
  * 
 */
 
 // build the nav
-  //dynamically create a navigation menu based on the sections of the page. 
-  //Keep in mind: where is the text from each navigation item coming from and where are you anchoring to? 
- 	// How're you going to add each navigation item to your menu (there are several ways to do this)
-
-
-const sections = document.querySelectorAll("section");
-const navBarList = 
-document.querySelector("#navbar__list");
 
 function createListItem(id, name) {
 	const listItem = document.createElement("li");
@@ -58,16 +48,10 @@ function createNav() {
 	);
 }
 
-createNav();
-
-
-document.querySelector(".navbar__menu").appendChild(navBarList);
-
-
-
 // Add class 'active' to section when near top of viewport
 
 function activeClassAssign() {
+
 	sections.forEach((section) =>
 			window.addEventListener("scroll", function(){
 				if (section.getBoundingClientRect().top < window.innerHeight &&
@@ -80,11 +64,9 @@ function activeClassAssign() {
 		);
 }
 
-activeClassAssign();
 
 
 
-// Scroll to anchor ID using scrollTO event
 
 
 /**
@@ -95,6 +77,26 @@ activeClassAssign();
 
 // Build menu 
 
-// Scroll to section on link click
+createNav();
+
+document.querySelector(".navbar__menu").appendChild(navBarList);
+
+// Scroll to anchor ID using scrollIntoView event
+
+links.forEach((link) => 
+	link.addEventListener('click', function(e) {
+		e.preventDefault();
+
+		document.querySelector(this.getAttribute('href')).scrollIntoView({
+			behavior: 'smooth'
+		});
+	})
+); 
+
 
 // Set sections as active
+
+activeClassAssign();
+
+
+
