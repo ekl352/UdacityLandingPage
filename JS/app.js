@@ -21,6 +21,7 @@
 const sections = document.querySelectorAll("section");
 const navBarList = document.querySelector("#navbar__list");
 myButton = document.getElementById("myBtn");
+const navLinks = document.querySelectorAll("#navbar__list li");
 
 /**
  * End Global Variables
@@ -64,13 +65,12 @@ function activeClassAssign() {
 }
 
 function activateNavLinks() {
-	let navLinks = document.querySelectorAll("#navbar__list li");
 
 	navLinks.forEach((navLink) => {
-		if (navLink.getAttribute("href") === "#" + section.id) {
-				this.classList.add("your-active-class");
+		if (navLink.anchor.href == "#" + section.id) {
+				navLink.classList.add("your-active-class");
 			} else {
-				this.classList.remove("your-active-class");
+				navLink.classList.remove("your-active-class");
 			}
 		}
 	)
