@@ -51,13 +51,29 @@ function activeClassAssign() {
 
 	sections.forEach((section) =>
 		window.addEventListener("scroll", function(){
-			if (section.getBoundingClientRect().top + 200 < window.innerHeight) {
+			if (section.getBoundingClientRect().top + 200 < window.innerHeight &&
+				section.getBoundingClientRect().bottom + 200 > window.innerHeight) {
 				section.classList.add("your-active-class");
+				activateNavLinks();
 			} else {
 				section.classList.remove("your-active-class");
+				section.li.classList.remove("your-active-class");
 			}
 		})
 	);
+}
+
+function activateNavLinks() {
+	let navLinks = document.querySelectorAll("#navbar__list li");
+
+	navLinks.forEach((navLink) => {
+		if (navLink.getAttribute("href") === "#" + section.id) {
+				this.classList.add("your-active-class");
+			} else {
+				this.classList.remove("your-active-class");
+			}
+		}
+	)
 }
 
 //Add scroll to top function for button, only show button when past the page fold.
