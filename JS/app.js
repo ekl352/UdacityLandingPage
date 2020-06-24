@@ -21,7 +21,8 @@
 const sections = document.querySelectorAll("section");
 const navBarList = document.querySelector("#navbar__list");
 myButton = document.getElementById("myBtn");
-const navLinks = document.querySelectorAll("#navbar__list li");
+const navLinks = document.querySelectorAll(".navbar__link");
+
 
 /**
  * End Global Variables
@@ -36,6 +37,7 @@ function createListItem(id, name) {
 	const anchor = document.createElement("a");
 	anchor.textContent = name;
 	anchor.href = "#" + id;
+	listItem.classList.add("navbar__link");
 	listItem.appendChild(anchor);
 	navBarList.appendChild(listItem);
 }
@@ -55,10 +57,10 @@ function activeClassAssign() {
 			if (section.getBoundingClientRect().top + 200 < window.innerHeight &&
 				section.getBoundingClientRect().bottom + 200 > window.innerHeight) {
 				section.classList.add("your-active-class");
+				const section_id_name = '#' + section.id;
 				activateNavLinks();
 			} else {
 				section.classList.remove("your-active-class");
-				section.li.classList.remove("your-active-class");
 			}
 		})
 	);
@@ -67,10 +69,11 @@ function activeClassAssign() {
 function activateNavLinks() {
 
 	navLinks.forEach((navLink) => {
-		if (navLink.anchor.href == "#" + section.id) {
-				navLink.classList.add("your-active-class");
+		if (this.anchor.href === section_id_name) {
+				this.classList.add("your-active-class");
+				console.log(this);
 			} else {
-				navLink.classList.remove("your-active-class");
+				this.classList.remove("your-active-class");
 			}
 		}
 	)
