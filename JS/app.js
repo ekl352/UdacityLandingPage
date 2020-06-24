@@ -37,6 +37,7 @@ function createListItem(id, name) {
 	const anchor = document.createElement("a");
 	anchor.textContent = name;
 	anchor.href = "#" + id;
+	listItem.setAttribute('id', id);
 	listItem.classList.add("navbar__link");
 	listItem.appendChild(anchor);
 	navBarList.appendChild(listItem);
@@ -50,6 +51,17 @@ function createNav() {
 
 // Add class 'active' to section when near top of viewport
 
+function activateNavLinks(id) {
+
+	navLinks.forEach((navLink) => {
+		if (navLink.id === id) {
+				navLink.classList.add("your-active-class");
+			} else {
+				navLink.classList.remove("your-active-class");
+			}
+		}
+	)
+}
 function activeClassAssign() {
 
 	sections.forEach((section) =>
@@ -57,8 +69,7 @@ function activeClassAssign() {
 			if (section.getBoundingClientRect().top + 200 < window.innerHeight &&
 				section.getBoundingClientRect().bottom + 200 > window.innerHeight) {
 				section.classList.add("your-active-class");
-				const section_id_name = '#' + section.id;
-				activateNavLinks();
+				activateNavLinks(section.id);
 			} else {
 				section.classList.remove("your-active-class");
 			}
@@ -66,18 +77,6 @@ function activeClassAssign() {
 	);
 }
 
-function activateNavLinks() {
-
-	navLinks.forEach((navLink) => {
-		if (this.anchor.href === section_id_name) {
-				this.classList.add("your-active-class");
-				console.log(this);
-			} else {
-				this.classList.remove("your-active-class");
-			}
-		}
-	)
-}
 
 //Add scroll to top function for button, only show button when past the page fold.
 
