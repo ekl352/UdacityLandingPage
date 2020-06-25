@@ -37,7 +37,6 @@ function createListItem(id, name) {
 	const anchor = document.createElement("a");
 	anchor.textContent = name;
 	anchor.href = "#" + id;
-	listItem.setAttribute('id', id);
 	listItem.classList.add("navbar__link");
 	listItem.appendChild(anchor);
 	navBarList.appendChild(listItem);
@@ -54,7 +53,7 @@ function createNav() {
 function activateNavLinks(id) {
 
 	navLinks.forEach((navLink) => {
-		if (navLink.id === id) {
+		if (navLink.anchor.href === id) {
 				navLink.classList.add("your-active-class");
 			} else {
 				navLink.classList.remove("your-active-class");
