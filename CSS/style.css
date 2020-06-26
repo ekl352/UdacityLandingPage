@@ -231,8 +231,16 @@ section.your-active-class {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
+.demo-class {
+    color: white;
+}
+
 .your-active-class h2 {
     color: #cc1;
+}
+
+.your-active-class li {
+    color: white;
 }
 
 

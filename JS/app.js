@@ -21,7 +21,6 @@
 const sections = document.querySelectorAll("section");
 const navBarList = document.querySelector("#navbar__list");
 myButton = document.getElementById("myBtn");
-const navLinks = document.querySelectorAll(".navbar__link");
 
 
 /**
@@ -37,6 +36,7 @@ function createListItem(id, name) {
 	const anchor = document.createElement("a");
 	anchor.textContent = name;
 	anchor.href = "#" + id;
+	anchor.id = "#" + id;
 	listItem.classList.add("navbar__link");
 	listItem.appendChild(anchor);
 	navBarList.appendChild(listItem);
@@ -52,15 +52,19 @@ function createNav() {
 
 function activateNavLinks(id) {
 
+const navLinks = document.querySelectorAll(".navbar__link");
+
 	navLinks.forEach((navLink) => {
-		if (navLink.anchor.href === id) {
-				navLink.classList.add("your-active-class");
-			} else {
-				navLink.classList.remove("your-active-class");
-			}
+		if (navLink.childNodes[0].id.substring(1) === id ) {
+			console.log(true);
+			navLink.childNodes[0].classList.add("demo-class");
+		} else {
+			console.log(false);
+			navLink.childNodes[0].classList.remove("demo-class");
 		}
-	)
+	})
 }
+
 function activeClassAssign() {
 
 	sections.forEach((section) =>
